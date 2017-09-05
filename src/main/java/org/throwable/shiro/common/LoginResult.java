@@ -8,7 +8,7 @@ import org.throwable.shiro.common.constants.LoginResultType;
  * @description
  * @since 2017/9/3 12:05
  */
-public class LoginResult {
+public abstract class LoginResult {
 
 	private LoginResultType loginResultType;
 

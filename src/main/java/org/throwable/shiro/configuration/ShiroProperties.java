@@ -70,7 +70,7 @@ public class ShiroProperties {
     private String usernameParam = FormAuthenticationFilter.DEFAULT_USERNAME_PARAM;
     private String rememberMeParam = FormAuthenticationFilter.DEFAULT_REMEMBER_ME_PARAM;
 
-    //avoid confliction for cookie name of jetty,tomcat...
+    //avoid conflict for cookie name of jetty,tomcat...
     private String sessionCookieName = SESSION_COOKIE_NAME;
     private String rememberMeCookieName = REMEMBERME_COOKIE_NAME;
     //30 days
