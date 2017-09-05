@@ -1,0 +1,3 @@
+# Auto Configuration Classes
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.throwable.shiro.support.ShiroAutoConfiguration

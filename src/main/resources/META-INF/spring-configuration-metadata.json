@@ -1,0 +1,186 @@
+{
+  "properties": [
+    {
+      "name": "spring.shiro.redis-nodes",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties"
+    },
+    {
+      "name": "spring.shiro.redis-password",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties"
+    },
+    {
+      "name": "spring.shiro.redis-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 3000
+    },
+    {
+      "name": "spring.shiro.redis-max-attempts",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "spring.shiro.redis-pool-max-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 8
+    },
+    {
+      "name": "spring.shiro.redis-pool-min-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "spring.shiro.redis-pool-max-active",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 8
+    },
+    {
+      "name": "spring.shiro.redis-pool-max-wait",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": -1
+    },
+    {
+      "name": "spring.shiro.redis-database",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "spring.shiro.session-timeout-seconds",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 1800
+    },
+    {
+      "name": "spring.shiro.enable-unauthorized-redirect",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.shiro.unauthorized-redirect-url",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "/unauthorized"
+    },
+    {
+      "name": "spring.shiro.login-url",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "/login"
+    },
+    {
+      "name": "spring.shiro.logout-url",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "/logout"
+    },
+    {
+      "name": "spring.shiro.login-success-redirect-url",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "/"
+    },
+    {
+      "name": "spring.shiro.logout-success-redirect-url",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "/"
+    },
+    {
+      "name": "spring.shiro.enable-login-lock",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.shiro.max-login-fail-attempts",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "spring.shiro.login-lock-seconds",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 86400
+    },
+    {
+      "name": "spring.shiro.locale",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "zh_CN"
+    },
+    {
+      "name": "spring.shiro.ini-file-location",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties"
+    },
+    {
+      "name": "spring.shiro.enable-shiro-realm",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.shiro.password-param",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "password"
+    },
+    {
+      "name": "spring.shiro.username-param",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "username"
+    },
+    {
+      "name": "spring.shiro.remember-me-param",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "rememberMe"
+    },
+    {
+      "name": "spring.shiro.max-cookie-age",
+      "type": "java.lang.Integer",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": 2592000
+    },
+    {
+      "name": "spring.shiro.cipher-key",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties"
+    },
+    {
+      "name": "spring.shiro.delete-invalid-sessions",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.shiro.enable-anonymous",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.shiro.session-cookie-name",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "SHIRO-SESSIONID"
+    },
+    {
+      "name": "spring.shiro.remember-me-cookie-name",
+      "type": "java.lang.String",
+      "sourceType": "org.throwable.shiro.configuration.ShiroProperties",
+      "defaultValue": "SHIRO-REMEMBERME"
+    }
+  ]
+}
