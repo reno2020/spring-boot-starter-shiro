@@ -1,10 +1,13 @@
 package org.throwable.shiro.support;
 
-import org.apache.shiro.authz.Permission;
+import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.throwable.shiro.common.LoginResult;
 import org.throwable.shiro.common.LoginSuccessResult;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author throwable
@@ -14,19 +17,11 @@ import java.util.*;
  */
 public abstract class AbstractShiroRealmConfigurer {
 
-    protected Set<String> addRoles(Object principal) {
-        return new HashSet<>();
-    }
+	protected AuthorizationInfo processAuthorizationInfo(String principal, PrincipalCollection principals) {
+		return null;
+	}
 
-    protected Set<String> addPermissionStrings(Object principal) {
-        return new HashSet<>();
-    }
-
-    protected Set<Permission> addPermissions(Object principal) {
-        return new HashSet<>();
-    }
-
-    protected List<LoginResult> processLogin(String principal, String credential) {
-        return new ArrayList<>(Collections.singletonList(new LoginSuccessResult()));
-    }
+	protected List<LoginResult> processLogin(String principal, String credential) {
+		return new ArrayList<>(Collections.singletonList(new LoginSuccessResult()));
+	}
 }

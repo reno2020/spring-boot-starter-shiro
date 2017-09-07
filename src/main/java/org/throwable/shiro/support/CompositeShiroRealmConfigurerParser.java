@@ -1,6 +1,10 @@
 package org.throwable.shiro.support;
 
+import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.CollectionUtils;
 import org.throwable.shiro.common.LoginResult;
 
 import java.util.*;
@@ -13,42 +17,61 @@ import java.util.*;
  */
 public class CompositeShiroRealmConfigurerParser {
 
-    private final List<AbstractShiroRealmConfigurer> configurers = new ArrayList<>();
+	private final List<AbstractShiroRealmConfigurer> configurers = new ArrayList<>();
 
-    public void addShiroRealmConfigurer(AbstractShiroRealmConfigurer shiroRealmConfigurer) {
-        configurers.add(shiroRealmConfigurer);
-    }
+	public void addShiroRealmConfigurer(AbstractShiroRealmConfigurer shiroRealmConfigurer) {
+		configurers.add(shiroRealmConfigurer);
+	}
 
-    public void addShiroRealmConfigurers(Collection<AbstractShiroRealmConfigurer> shiroRealmConfigurers) {
-        configurers.addAll(shiroRealmConfigurers);
-    }
+	public void addShiroRealmConfigurers(Collection<AbstractShiroRealmConfigurer> shiroRealmConfigurers) {
+		configurers.addAll(shiroRealmConfigurers);
+	}
 
-    public void setShiroRealmConfigurers(Collection<AbstractShiroRealmConfigurer> shiroRealmConfigurers) {
-        configurers.clear();
-        configurers.addAll(shiroRealmConfigurers);
-    }
+	public void setShiroRealmConfigurers(Collection<AbstractShiroRealmConfigurer> shiroRealmConfigurers) {
+		configurers.clear();
+		configurers.addAll(shiroRealmConfigurers);
+	}
 
-    public Set<String> parseRoles(Object principal) {
-        final Set<String> roles = new HashSet<>();
-        configurers.forEach(each -> roles.addAll(each.addRoles(principal)));
-        return roles;
-    }
+	public AuthorizationInfo processCompositeAuthorizationInfoChains(String principal, PrincipalCollection principals) {
+		List<AuthorizationInfo> chains = processAuthorizationInfoChains(principal, principals);
+		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+		Set<String> roles = new HashSet<>();
+		Set<String> stringPermissions = new HashSet<>();
+		Set<Permission> objectPermissions = new HashSet<>();
+		if (!CollectionUtils.isEmpty(chains)) {
+			chains.forEach(each -> {
+				if (null != each) {
+					roles.addAll(each.getRoles());
+					stringPermissions.addAll(each.getStringPermissions());
+					objectPermissions.addAll(each.getObjectPermissions());
+				}
+			});
+		}
+		simpleAuthorizationInfo.setRoles(roles);
+		simpleAuthorizationInfo.setObjectPermissions(objectPermissions);
+		simpleAuthorizationInfo.setStringPermissions(stringPermissions);
+		return simpleAuthorizationInfo;
+	}
 
-    public Set<String> parsePermissionStrings(Object principal) {
-        final Set<String> permissionStrings = new HashSet<>();
-        configurers.forEach(each -> permissionStrings.addAll(each.addPermissionStrings(principal)));
-        return permissionStrings;
-    }
+	private List<AuthorizationInfo> processAuthorizationInfoChains(String principal, PrincipalCollection principals) {
+		final List<AuthorizationInfo> authorizationInfos = new LinkedList<>();
+		configurers.forEach(each -> {
+			AuthorizationInfo authorizationInfo = each.processAuthorizationInfo(principal, principals);
+			if (null != authorizationInfo) {
+				authorizationInfos.add(authorizationInfo);
+			}
+		});
+		return authorizationInfos;
+	}
 
-    public Set<Permission> parsePermissions(Object principal) {
-        final Set<Permission> permissions = new HashSet<>();
-        configurers.forEach(each -> permissions.addAll(each.addPermissions(principal)));
-        return permissions;
-    }
-
-    public List<LoginResult> processLoginChains(String principal, String credential) {
-        final List<LoginResult> loginResults = new LinkedList<>();
-        configurers.forEach(each -> loginResults.addAll(each.processLogin(principal, credential)));
-        return loginResults;
-    }
+	public List<LoginResult> processLoginChains(String principal, String credential) {
+		final List<LoginResult> loginResults = new LinkedList<>();
+		configurers.forEach(each -> {
+			List<LoginResult> eachResults = each.processLogin(principal, credential);
+			if (!CollectionUtils.isEmpty(eachResults)) {
+				loginResults.addAll(eachResults);
+			}
+		});
+		return loginResults;
+	}
 }
